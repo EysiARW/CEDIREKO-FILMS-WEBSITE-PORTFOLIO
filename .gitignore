@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Internal Teamwork agent states
+.agents/
+.system_generated/
+
+# Logs
+*.log
