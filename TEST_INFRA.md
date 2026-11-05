@@ -110,7 +110,7 @@ The suite comprises **70 automated test cases** systematically testing all requi
 | | `Video Modal: Modal video element receives source of selected project` | Verifies active project video source binding |
 | | `Video Modal: Close button dismisses dialog` | Confirms close button dismisses dialog |
 | | `Video Modal: Escape key dismisses open dialog` | Confirms native Escape key dismisses dialog |
-| | `Video Modal: Google Drive high-res master fallback link is present` | Confirms accessible external Drive fallback link |
+| | `Video Modal: External Google Drive master link is removed` | Confirms removal of external Drive fallback links |
 | **Navigation Header** | `Navigation: Semantic <header> element exists with <nav>` | Validates `<header>` and `<nav>` semantic landmarks |
 | | `Navigation: Wordmark/logo link links back to hero/top` | Verifies studio branding link in header |
 | | `Navigation: Contains section anchor links to Reel, About, and Inquiry` | Verifies anchor links (`#reel`, `#about`, `#inquiry`) |
@@ -148,7 +148,7 @@ The suite comprises **70 automated test cases** systematically testing all requi
 | | `Backdrop Click: Drag selection starting inside dialog does not dismiss on mouseup` | Verifies drag dismiss false-positive prevention |
 | | `Backdrop Click: Mobile touch tap outside dialog dismisses on small viewport` | Verifies mobile outside tap dismiss |
 | **Media Resilience** | `Media Resilience: Poster gradient fallback renders on every card` | Verifies gradient fallbacks on cards |
-| | `Media Resilience: External Google Drive backup links have valid URLs and rel="noopener"` | Verifies backup links are valid HTTPS URLs |
+| | `Media Resilience: Zero external Google Drive master links exist in DOM` | Confirms zero external Drive links exist |
 | | `Media Resilience: Empty or malformed data-src does not crash page controllers` | Verifies controller resilience against invalid data |
 | | `Media Resilience: Director founder portrait includes descriptive alt text` | Verifies screen reader accessibility on portrait |
 | | `Media Resilience: Video error events on preview elements do not halt page operation` | Verifies preview error event containment |
@@ -167,7 +167,7 @@ The suite comprises **70 automated test cases** systematically testing all requi
 |---|---|---|
 | **Full Desktop Journey** | `Journey: Full visitor discovery from landing to reel filtering, modal playback, bio, and inquiry` | 11-step journey: Landing -> Hero verification -> Scroll to Reel -> Filter Vertical -> Play Cyra -> Close modal -> Filter Commercial -> Play Veronikka -> Close via Esc -> View Director Bio -> Access Inquiry CTA |
 | **Mobile Touch Journey** | `Journey: Mobile visitor touch journey across reels and navigation` | 375px mobile landing -> zero overflow -> tap-to-play reel card in modal theater -> dismiss via touch/Esc |
-| **Client Commercial Discovery** | `Journey: Commercial client inspects metadata and Google Drive master link` | Commercial project metadata verification (SC.01, duration, category) and Google Drive master link integrity |
+| **Client Commercial Discovery** | `Journey: Commercial client inspects project metadata and media specs` | Commercial project metadata verification (SC.01, duration, category) and media specs integrity |
 
 ---
 

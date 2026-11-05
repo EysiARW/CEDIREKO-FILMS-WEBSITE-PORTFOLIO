@@ -87,15 +87,15 @@ suite.test('Journey: Mobile visitor touch journey across reels and navigation', 
 });
 
 // ============================================================================
-// SCENARIO 3: COMMERCIAL CLIENT DISCOVERY & MASTER FILE VERIFICATION
+// SCENARIO 3: COMMERCIAL CLIENT DISCOVERY & METADATA VERIFICATION
 // ============================================================================
 
-suite.test('Journey: Commercial client inspects metadata and Google Drive master link', async ({ browser }) => {
+suite.test('Journey: Commercial client inspects project metadata and media specs', async ({ browser }) => {
   // Client inspects commercial projects
-  const veronikkaMeta = await browser.evaluate("(() => {\n    const card = document.querySelector('.reel-card[data-orientation=\"landscape\"]');\n    if (!card) return null;\n    return {\n      driveUrl: card.getAttribute('data-drive-url'),\n      title: (card.querySelector('.reel-title') || {}).textContent || '',\n      category: (card.querySelector('.reel-cat') || {}).textContent || '',\n      scene: (card.querySelector('.reel-tc') || {}).textContent || ''\n    };\n  })()");
+  const veronikkaMeta = await browser.evaluate("(() => {\n    const card = document.querySelector('.reel-card[data-orientation=\"landscape\"]');\n    if (!card) return null;\n    return {\n      title: (card.querySelector('.reel-title') || {}).textContent || '',\n      category: (card.querySelector('.reel-cat') || {}).textContent || '',\n      scene: (card.querySelector('.reel-tc') || {}).textContent || ''\n    };\n  })()");
 
   Assert.ok(veronikkaMeta, 'Landscape project card must exist');
-  Assert.ok(veronikkaMeta.driveUrl && veronikkaMeta.driveUrl.includes('drive.google.com'), 'Project must provide a high-resolution Google Drive master share link');
+  Assert.ok(veronikkaMeta.title.includes('VERONIKKA'), 'Project title must display client/campaign name');
   Assert.ok(veronikkaMeta.category.length > 0, 'Project must display editorial category');
   Assert.ok(veronikkaMeta.scene.length > 0, 'Project must display camera scene / duration timecode');
 });

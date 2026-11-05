@@ -227,18 +227,15 @@ suite.test('Media Resilience: Poster gradient fallback renders on every card', a
   }
 });
 
-suite.test('Media Resilience: External Google Drive backup links have valid URLs and rel="noopener"', async ({ browser }) => {
-  const driveUrls = await browser.evaluate("(() => {\n    const cards = Array.from(document.querySelectorAll('[data-drive-url], a[href*=\"drive.google.com\"]'));\n    return cards.map(c => c.getAttribute('data-drive-url') || c.getAttribute('href') || '');\n  })()");
+suite.test('Media Resilience: Zero external Google Drive master links exist in DOM', async ({ browser }) => {
+  const driveCount = await browser.evaluate("(() => {\n    const elements = Array.from(document.querySelectorAll('[data-drive-url], a[href*=\"drive.google.com\"]'));\n    return elements.length;\n  })()");
 
-  Assert.greaterThanOrEqual(driveUrls.length, 5, 'All 5 projects must have Google Drive fallback URLs');
-  for (const url of driveUrls) {
-    Assert.ok(url.startsWith('https://drive.google.com/'), `Drive URL must be valid Google Drive link (got: ${url})`);
-  }
+  Assert.strictEqual(driveCount, 0, 'All external Google Drive master links must be removed');
 });
 
 suite.test('Media Resilience: Empty or malformed data-src does not crash page controllers', async ({ browser }) => {
   browser.resetErrors();
-  await browser.evaluate("(() => {\n    const dummyCard = document.createElement('div');\n    dummyCard.className = 'reel-card';\n    dummyCard.setAttribute('data-drive-url', '');\n    document.body.appendChild(dummyCard);\n    dummyCard.click();\n    document.body.removeChild(dummyCard);\n  })()");
+  await browser.evaluate("(() => {\n    const dummyCard = document.createElement('div');\n    dummyCard.className = 'reel-card';\n    document.body.appendChild(dummyCard);\n    dummyCard.click();\n    document.body.removeChild(dummyCard);\n  })()");
 
   Assert.strictEqual(browser.consoleErrors.length, 0, 'Malformed card click must not throw unhandled exception');
 });

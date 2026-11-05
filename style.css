@@ -1613,31 +1613,6 @@ dialog#video-modal::backdrop {
   font-size: 0.6rem;
 }
 
-.btn-external-drive {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.65rem 1.2rem;
-  border: 1px solid var(--ember);
-  border-radius: var(--radius-xs, 2px);
-  background: rgba(205, 160, 90, 0.1);
-  color: var(--ember);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: all var(--duration-fast) var(--ease);
-}
-.btn-external-drive:hover {
-  background: var(--ember);
-  color: var(--frame);
-}
-.btn-external-drive:focus-visible {
-  outline: 2px solid var(--ember);
-  outline-offset: 3px;
-}
-
 /* ---------- SITE FOOTER ---------- */
 .site-footer,
 footer {

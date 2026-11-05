@@ -390,7 +390,6 @@ class VideoModalPlayerController {
   #title;
   #cat;
   #tc;
-  #driveLink;
   #closeBtn;
   #lastActiveElement;
   #mouseDownInside;
@@ -403,7 +402,6 @@ class VideoModalPlayerController {
     this.#title = this.#dialog.querySelector('#modal-title');
     this.#cat = this.#dialog.querySelector('#modal-cat');
     this.#tc = this.#dialog.querySelector('#modal-tc');
-    this.#driveLink = this.#dialog.querySelector('#modal-drive-link');
     this.#closeBtn = this.#dialog.querySelector('.modal-close, button[aria-label*="close" i]');
     this.#lastActiveElement = null;
     this.#mouseDownInside = false;
@@ -501,7 +499,6 @@ class VideoModalPlayerController {
     const title = card.querySelector('.reel-title, h3')?.textContent?.trim() || 'FEATURED WORK';
     const cat = card.querySelector('.reel-cat')?.textContent?.trim() || 'COMMERCIAL';
     const tc = card.querySelector('.reel-tc span:last-child')?.textContent?.trim() || '00:00';
-    const driveUrl = card.dataset.driveUrl || '';
 
     if (this.#title) this.#title.textContent = title;
     if (this.#cat) this.#cat.textContent = cat;
@@ -518,16 +515,6 @@ class VideoModalPlayerController {
         span.innerHTML = detail.innerHTML;
         specsContainer.appendChild(span);
       });
-    }
-
-    if (this.#dialog && driveUrl) {
-      this.#dialog.setAttribute('data-drive-url', driveUrl);
-    }
-
-    if (this.#driveLink) {
-      const validDrive = driveUrl && driveUrl !== '#' ? driveUrl : 'https://drive.google.com';
-      this.#driveLink.href = validDrive;
-      this.#driveLink.setAttribute('data-drive-url', validDrive);
     }
 
     if (this.#video && src) {

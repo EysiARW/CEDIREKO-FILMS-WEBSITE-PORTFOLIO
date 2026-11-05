@@ -237,10 +237,10 @@ suite.test('Video Modal: Escape key dismisses open dialog', async ({ browser }) 
   Assert.isTrue(isClosed, 'Pressing Escape key must dismiss the open video modal dialog');
 });
 
-suite.test('Video Modal: Google Drive high-res master fallback link is present', async ({ browser }) => {
+suite.test('Video Modal: External Google Drive master link is removed', async ({ browser }) => {
   const driveLink = await browser.evaluate("(() => {\n    const link = document.querySelector('dialog a[href*=\"drive.google.com\"], a.btn-external-drive, [data-drive-url]');\n    return !!link;\n  })()");
 
-  Assert.isTrue(driveLink, 'A fallback link to Google Drive master files must be accessible');
+  Assert.isFalse(driveLink, 'External Google Drive master fallback links must be completely removed');
 });
 
 // ============================================================================
