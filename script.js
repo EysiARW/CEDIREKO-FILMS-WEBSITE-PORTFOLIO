@@ -338,10 +338,31 @@ class ReelFilterController {
   init() {
     if (!this.#grid || !this.#buttons.length) return;
 
-    this.#buttons.forEach(btn => {
+    this.#buttons.forEach((btn, index) => {
       btn.addEventListener('click', () => {
         const view = btn.dataset.view;
         this.setView(view, btn);
+      });
+
+      // Keyboard arrow navigation across tablist (WAI-ARIA compliance)
+      btn.addEventListener('keydown', (e) => {
+        let targetIndex = -1;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          targetIndex = (index + 1) % this.#buttons.length;
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          targetIndex = (index - 1 + this.#buttons.length) % this.#buttons.length;
+        } else if (e.key === 'Home') {
+          targetIndex = 0;
+        } else if (e.key === 'End') {
+          targetIndex = this.#buttons.length - 1;
+        }
+
+        if (targetIndex >= 0) {
+          e.preventDefault();
+          const targetBtn = this.#buttons[targetIndex];
+          targetBtn.focus();
+          this.setView(targetBtn.dataset.view, targetBtn);
+        }
       });
     });
   }
@@ -410,6 +431,26 @@ class VideoModalPlayerController {
       }
     });
 
+    // Modal keyboard focus trap (WCAG 2.1 AA dialog pattern)
+    this.#dialog.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab' || !this.#dialog.open) return;
+      const focusables = Array.from(
+        this.#dialog.querySelectorAll('button, [href], input, select, textarea, video, [tabindex]:not([tabindex="-1"])')
+      ).filter(el => !el.hasAttribute('disabled') && el.offsetParent !== null);
+
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+
     // Native close event
     this.#dialog.addEventListener('close', () => {
       this.#cleanupMedia();
@@ -460,18 +501,39 @@ class VideoModalPlayerController {
     const title = card.querySelector('.reel-title, h3')?.textContent?.trim() || 'FEATURED WORK';
     const cat = card.querySelector('.reel-cat')?.textContent?.trim() || 'COMMERCIAL';
     const tc = card.querySelector('.reel-tc span:last-child')?.textContent?.trim() || '00:00';
-    const driveUrl = card.dataset.driveUrl || '#';
+    const driveUrl = card.dataset.driveUrl || '';
 
     if (this.#title) this.#title.textContent = title;
     if (this.#cat) this.#cat.textContent = cat;
     if (this.#tc) this.#tc.textContent = tc;
+
+    // Structured metadata synchronization
+    const specsContainer = this.#dialog.querySelector('#modal-specs');
+    if (specsContainer) {
+      specsContainer.innerHTML = '';
+      const details = card.querySelectorAll('.reel-detail');
+      details.forEach(detail => {
+        const span = document.createElement('span');
+        span.className = 'modal-spec-item';
+        span.innerHTML = detail.innerHTML;
+        specsContainer.appendChild(span);
+      });
+    }
+
     if (this.#driveLink) {
-      this.#driveLink.href = driveUrl;
-      this.#driveLink.setAttribute('data-drive-url', driveUrl);
+      const validDrive = driveUrl && driveUrl !== '#' ? driveUrl : 'https://drive.google.com';
+      this.#driveLink.href = validDrive;
+      this.#driveLink.setAttribute('data-drive-url', validDrive);
     }
 
     if (this.#video && src) {
       this.#video.src = src;
+      const poster = card.querySelector('.reel-video')?.getAttribute('poster');
+      if (poster) {
+        this.#video.setAttribute('poster', poster);
+      } else {
+        this.#video.removeAttribute('poster');
+      }
       this.#video.load();
       this.#video.play().catch(() => {});
     }
@@ -518,17 +580,30 @@ class VideoModalPlayerController {
 /**
  * MediaPreviewController
  * Handles viewport lazy-loading and desktop hover preview playback.
+ * Enforces single-video active playback across all preview cards.
  */
 class MediaPreviewController {
   #cards;
   #videoModal;
   #observer;
+  #currentlyPlaying;
 
   constructor(videoModal) {
     this.#cards = document.querySelectorAll('.reel-card');
     this.#videoModal = videoModal;
+    this.#currentlyPlaying = null;
 
     this.init();
+  }
+
+  #pauseCurrent() {
+    if (this.#currentlyPlaying && !this.#currentlyPlaying.paused) {
+      const card = this.#currentlyPlaying.closest('.reel-card');
+      const seekTime = parseFloat(card?.dataset.seekTime || '1.0');
+      this.#currentlyPlaying.pause();
+      this.#currentlyPlaying.currentTime = seekTime;
+      this.#currentlyPlaying = null;
+    }
   }
 
   init() {
@@ -538,11 +613,18 @@ class MediaPreviewController {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const video = entry.target;
+          const card = video.closest('.reel-card');
           const src = video.dataset.src;
           if (src && !video.src) {
-            video.preload = 'auto';
+            video.preload = 'metadata';
             video.src = src;
             video.classList.add('has-src');
+            const seekTime = parseFloat(card?.dataset.seekTime || '1.0');
+            video.addEventListener('loadedmetadata', () => {
+              if (video.currentTime === 0) {
+                video.currentTime = seekTime;
+              }
+            }, { once: true });
           }
           this.#observer.unobserve(video);
         }
@@ -560,22 +642,33 @@ class MediaPreviewController {
         this.#observer.observe(video);
 
         card.addEventListener('mouseenter', () => {
+          if (this.#currentlyPlaying && this.#currentlyPlaying !== video) {
+            this.#pauseCurrent();
+          }
+          this.#currentlyPlaying = video;
           video.play().catch(() => {});
         });
+
         card.addEventListener('mouseleave', () => {
           video.pause();
-          setTimeout(() => { video.currentTime = 0; }, 500);
+          if (this.#currentlyPlaying === video) {
+            this.#currentlyPlaying = null;
+          }
+          const seekTime = parseFloat(card.dataset.seekTime || '1.0');
+          setTimeout(() => { video.currentTime = seekTime; }, 200);
         });
       }
 
       card.addEventListener('click', (e) => {
         e.preventDefault();
+        this.#pauseCurrent();
         this.#videoModal?.open(card);
       });
 
       card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
+          this.#pauseCurrent();
           this.#videoModal?.open(card);
         }
       });

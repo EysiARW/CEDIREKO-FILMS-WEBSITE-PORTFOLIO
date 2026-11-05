@@ -3,7 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CEDIREKO — Videography</title>
+<title>CEDIREKO Films — Videography Portfolio</title>
+<meta name="description" content="CEDIREKO Films — Cinematic narratives, commercial campaigns, music videos, and vertical editorial films crafted with patient framing and honest light.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="CEDIREKO Films — Videography Portfolio">
+<meta property="og:description" content="Cinematic narratives, commercial campaigns, music videos, and vertical editorial films crafted with patient framing and honest light.">
+<meta property="og:image" content="assets/CEDIREKO PNG.png">
+<meta property="og:url" content="https://cedireko-film-website-portfolio2026.great-site.net">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CEDIREKO Films — Videography Portfolio">
+<meta name="twitter:description" content="Cinematic narratives, commercial campaigns, music videos, and vertical editorial films crafted with patient framing and honest light.">
+<meta name="twitter:image" content="assets/CEDIREKO PNG.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -25,8 +40,8 @@
       
       <!-- Left: Studio Brand & Logo Link -->
       <a href="#hero" class="site-header__brand" aria-label="CEDIREKO FILMS — Back to top">
-        <img src="assets/CEDIREKO PNG.png" alt="" class="site-header__logo" width="36" height="36" decoding="async">
-        <span class="site-header__brand-text wordmark">CEDIREKO</span>
+        <img src="assets/CEDIREKO PNG.png" alt="CEDIREKO Films logo mark" class="site-header__logo" width="36" height="36" decoding="async">
+        <span class="site-header__brand-text wordmark">CEDIREKO FILMS</span>
       </a>
 
       <!-- Center: Editorial Status Badge in Space Mono -->
@@ -43,9 +58,6 @@
           </li>
           <li class="site-header__nav-item">
             <a href="#about" class="site-header__nav-link">About</a>
-          </li>
-          <li class="site-header__nav-item">
-            <a href="#contact" class="site-header__nav-link">Inquiries</a>
           </li>
         </ul>
       </nav>
@@ -96,17 +108,12 @@
               <span class="mobile-nav__label">About</span>
             </a>
           </li>
-          <li class="mobile-nav__item">
-            <a href="#contact" class="mobile-nav__link">
-              <span class="mobile-nav__index" aria-hidden="true">03</span>
-              <span class="mobile-nav__label">Inquiries</span>
-            </a>
-          </li>
         </ul>
 
         <div class="mobile-nav__footer">
-          <p class="mobile-nav__motto">"Maging mabait lang palagi."</p>
-          <span class="mobile-nav__copyright">CEDIREKO STUDIO &copy; 2026</span>
+          <p class="mobile-nav__motto">&ldquo;Maging mabait lang palagi.&rdquo;</p>
+          <p class="mobile-nav__motto-sub">&ldquo;Always just be kind.&rdquo;</p>
+          <span class="mobile-nav__copyright">CEDIREKO FILMS &copy; 2026</span>
         </div>
       </nav>
     </div>
@@ -121,12 +128,12 @@
     <div class="letterbox bottom" aria-hidden="true"></div>
 
     <!-- Pinned vertical side text badges (editorial publication framing) -->
-    <div class="hero__side-text hero__side-text--left hero-side-text--left side-badge" aria-hidden="true">[ CEDIREKO STUDIO ]</div>
+    <div class="hero__side-text hero__side-text--left hero-side-text--left side-badge" aria-hidden="true">[ CEDIREKO FILMS ]</div>
     <div class="hero__side-text hero__side-text--right hero-side-text--right side-badge" aria-hidden="true">[ VISUAL STORYTELLING &mdash; 2026 ]</div>
 
     <!-- Viewfinder camera telemetry overlay (ARRI/RED cinema monitor aesthetic) -->
     <div class="hero__viewfinder hero-viewfinder" aria-hidden="true">
-      <span class="hero-tc tl">CEDIREKO&trade;</span>
+      <span class="hero-tc tl">CEDIREKO FILMS</span>
       <span class="hero-tc tr">EST. 2026</span>
       <span class="hero-tc bl">06:23:06:23</span>
       <span class="hero-tc br">REC <span class="tally-dot" aria-hidden="true">&bull;</span></span>
@@ -143,9 +150,12 @@
              fetchpriority="high" 
              decoding="async">
       </div>
-      <div class="hero__eyebrow" aria-hidden="true">[ CINEMATOGRAPHY &bull; DIRECTION ]</div>
+      <div class="hero__eyebrow">[ CINEMATOGRAPHY &bull; DIRECTION ]</div>
       <h1 id="hero-title" class="studio-name hero__title wordmark">CEDIREKO FILMS</h1>
-      <p class="tagline hero__tagline">&ldquo;Maging mabait lang palagi.&rdquo;</p>
+      <div class="hero__tagline-group">
+        <p class="tagline hero__tagline">&ldquo;Maging mabait lang palagi.&rdquo;</p>
+        <p class="hero__tagline-sub">&ldquo;Always just be kind.&rdquo;</p>
+      </div>
       <p class="hero__logline">Cinematic narratives crafted with patient framing, honest light, and quiet human intimacy.</p>
       
       <!-- Interactive Semantic Scroll Prompt -->
@@ -156,106 +166,154 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="about-grid reveal">
-      <div class="about-frame">
-        <!-- 🖼️ Portrait photo — swap the src if you want to update it later -->
-        <img class="about-placeholder-img" src="assets/IMG_9987.jpeg" alt="Portrait of the CEDIREKO founder">
-        <span class="frame-tc">PORTRAIT — 4:5</span>
-      </div>
-      <div class="about-text">
-        <div class="section-head">
-          <span class="eyebrow">Behind the lens</span>
-          <h2 class="section-title">About the studio</h2>
+  <!-- REEL / SELECTED WORK -->
+  <section class="reel" id="reel" aria-labelledby="reel-title">
+    <div class="section-container">
+      <div class="section-head reel-head reveal">
+        <div>
+          <span class="eyebrow">Selected work</span>
+          <h2 id="reel-title" class="section-title">The Reel</h2>
         </div>
-        <p>CEDIREKO is a one-person videography studio built on a simple rule: treat every subject the way you'd want to be treated on camera. From weddings and brand films to quiet everyday moments, the work leans on patient framing, honest color, and sound that breathes — never louder than the story itself. Every project starts with a conversation, not a checklist, because the best footage comes from people who feel comfortable enough to forget the camera is there.</p>
+        <div class="reel-toggle" role="tablist" aria-label="Reel orientation">
+          <button type="button" class="reel-toggle-btn is-active" data-view="all" role="tab" aria-selected="true" id="tab-all" aria-controls="reel-grid">All Work</button>
+          <button type="button" class="reel-toggle-btn" data-view="landscape" role="tab" aria-selected="false" id="tab-films" aria-controls="reel-grid">Films</button>
+          <button type="button" class="reel-toggle-btn" data-view="portrait" role="tab" aria-selected="false" id="tab-vertical" aria-controls="reel-grid">Vertical</button>
+        </div>
+      </div>
+
+      <!-- 🎞️ Reel Grid: Responsive showcase with structured metadata -->
+      <div class="reel-grid reveal-stagger" id="reel-grid" data-view="all" role="tabpanel" aria-labelledby="tab-all">
+
+        <!-- Project 01: Veronikka Rebranding -->
+        <div class="reel-card stagger-item" data-orientation="landscape" data-seek-time="1.0" data-drive-url="https://drive.google.com/file/d/1rmEwiETZOfaKV5Ti8nxKuodzsKE7udp0/view?usp=sharing" tabindex="0" role="button" aria-label="Play Veronikka Rebranding (Advertisement)">
+          <div class="reel-thumb" style="background:linear-gradient(150deg,#5c1420,#2a0509 70%);"></div>
+          <video class="reel-video" data-src="projects/VERONIKKA_REVISED_3.mp4" poster="assets/posters/veronikka.jpg" muted loop playsinline preload="metadata"></video>
+          <div class="reel-tc"><span>SC.01</span><span>03:42</span></div>
+          <div class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg></div>
+          <div class="reel-meta">
+            <span class="reel-cat">ADVERTISEMENT</span>
+            <h3 class="reel-title">VERONIKKA REBRANDING</h3>
+            <div class="reel-details">
+              <span class="reel-detail"><span class="detail-key">Client:</span> Veronikka</span>
+              <!-- TODO: Confirm production year (defaulted to 2026) -->
+              <span class="reel-detail"><span class="detail-key">Year:</span> 2026</span>
+              <!-- TODO: Confirm filmmaker role credits (defaulted to Director & DP) -->
+              <span class="reel-detail"><span class="detail-key">Role:</span> Director &amp; DP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 02: EA Performance -->
+        <div class="reel-card stagger-item" data-orientation="landscape" data-seek-time="2.0" data-drive-url="https://drive.google.com/file/d/1AikiVPPksRjRAgzquLySln9YUB0An44u/view?usp=sharing" tabindex="0" role="button" aria-label="Play EA Performance (Music Video)">
+          <div class="reel-thumb" style="background:linear-gradient(150deg,#7a2233,#3c0008 70%);"></div>
+          <video class="reel-video" data-src="projects/EA_FINALCUT.mp4" poster="assets/posters/ea.jpg" muted loop playsinline preload="metadata"></video>
+          <div class="reel-tc"><span>SC.02</span><span>01:58</span></div>
+          <div class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg></div>
+          <div class="reel-meta">
+            <span class="reel-cat">MUSIC VIDEO</span>
+            <h3 class="reel-title">EA PERFORMANCE</h3>
+            <div class="reel-details">
+              <!-- TODO: Confirm client / artist official name -->
+              <span class="reel-detail"><span class="detail-key">Client:</span> EA</span>
+              <!-- TODO: Confirm production year (defaulted to 2026) -->
+              <span class="reel-detail"><span class="detail-key">Year:</span> 2026</span>
+              <!-- TODO: Confirm filmmaker role credits (defaulted to DP & Editor) -->
+              <span class="reel-detail"><span class="detail-key">Role:</span> DP &amp; Editor</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- FICO MANA Series Header: Groups Cyra, Breanna, and Leigh into a unified editorial collection -->
+        <div class="reel-series-header" data-series="ficomana">
+          <div class="reel-series-header__inner">
+            <span class="eyebrow">[ VERTICAL EDITORIAL SERIES ]</span>
+            <h3 class="reel-series-title">FICO MANA</h3>
+            <p class="reel-series-desc">Three-part vertical narrative series (01 Cyra &bull; 02 Breanna &bull; 03 Leigh)</p>
+          </div>
+        </div>
+
+        <!-- Project 03: FICO MANA — Cyra -->
+        <div class="reel-card stagger-item" data-orientation="portrait" data-series="ficomana" data-seek-time="1.5" data-drive-url="https://drive.google.com/file/d/1HslynPLnVbk3q7SKQBXoSfOH_mfwrp0j/view?usp=sharing" tabindex="0" role="button" aria-label="Play Fico Mana Cyra (Vertical Series Pt. 1)">
+          <div class="reel-thumb" style="background:linear-gradient(150deg,#6b1c28,#2a0509 70%);"></div>
+          <video class="reel-video" data-src="projects/FICOMANA_CYRA_2_1.mp4" poster="assets/posters/ficomana_cyra.jpg" muted loop playsinline preload="metadata"></video>
+          <div class="reel-tc"><span>SC.03</span><span>00:47</span></div>
+          <div class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg></div>
+          <div class="reel-meta">
+            <span class="reel-cat">FICO MANA &bull; 01</span>
+            <h3 class="reel-title">CYRA</h3>
+            <div class="reel-details">
+              <!-- TODO: Confirm client / label name -->
+              <span class="reel-detail"><span class="detail-key">Client:</span> Fico Mana</span>
+              <!-- TODO: Confirm production year (defaulted to 2026) -->
+              <span class="reel-detail"><span class="detail-key">Year:</span> 2026</span>
+              <!-- TODO: Confirm filmmaker role credits (defaulted to Director & DP) -->
+              <span class="reel-detail"><span class="detail-key">Role:</span> Director &amp; DP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 04: FICO MANA — Breanna -->
+        <div class="reel-card stagger-item" data-orientation="portrait" data-series="ficomana" data-seek-time="1.5" data-drive-url="https://drive.google.com/file/d/1EMaMXxD_GfWrKqIcIlwz_XCu4UbotDVo/view?usp=sharing" tabindex="0" role="button" aria-label="Play Fico Mana Breanna (Vertical Series Pt. 2)">
+          <div class="reel-thumb" style="background:linear-gradient(150deg,#6b1c28,#2a0509 70%);"></div>
+          <video class="reel-video" data-src="projects/BREANNA_1.mp4" poster="assets/posters/ficomana_breanna.jpg" muted loop playsinline preload="metadata"></video>
+          <div class="reel-tc"><span>SC.04</span><span>00:47</span></div>
+          <div class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg></div>
+          <div class="reel-meta">
+            <span class="reel-cat">FICO MANA &bull; 02</span>
+            <h3 class="reel-title">BREANNA</h3>
+            <div class="reel-details">
+              <!-- TODO: Confirm client / label name -->
+              <span class="reel-detail"><span class="detail-key">Client:</span> Fico Mana</span>
+              <!-- TODO: Confirm production year (defaulted to 2026) -->
+              <span class="reel-detail"><span class="detail-key">Year:</span> 2026</span>
+              <!-- TODO: Confirm filmmaker role credits (defaulted to Director & DP) -->
+              <span class="reel-detail"><span class="detail-key">Role:</span> Director &amp; DP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 05: FICO MANA — Leigh -->
+        <div class="reel-card stagger-item" data-orientation="portrait" data-series="ficomana" data-seek-time="1.5" data-drive-url="https://drive.google.com/file/d/1m8sYsiDFkflw97CaBlq0caHEnpx-9yvR/view?usp=sharing" tabindex="0" role="button" aria-label="Play Fico Mana Leigh (Vertical Series Pt. 3)">
+          <div class="reel-thumb" style="background:linear-gradient(150deg,#6b1c28,#2a0509 70%);"></div>
+          <video class="reel-video" data-src="projects/FICOMANA_LEIGH.mp4" poster="assets/posters/ficomana_leigh.jpg" muted loop playsinline preload="metadata"></video>
+          <div class="reel-tc"><span>SC.05</span><span>00:47</span></div>
+          <div class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg></div>
+          <div class="reel-meta">
+            <span class="reel-cat">FICO MANA &bull; 03</span>
+            <h3 class="reel-title">LEIGH</h3>
+            <div class="reel-details">
+              <!-- TODO: Confirm client / label name -->
+              <span class="reel-detail"><span class="detail-key">Client:</span> Fico Mana</span>
+              <!-- TODO: Confirm production year (defaulted to 2026) -->
+              <span class="reel-detail"><span class="detail-key">Year:</span> 2026</span>
+              <!-- TODO: Confirm filmmaker role credits (defaulted to Director & DP) -->
+              <span class="reel-detail"><span class="detail-key">Role:</span> Director &amp; DP</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- REEL -->
-  <section class="reel" id="reel">
-    <div class="section-head reel-head reveal">
-      <div>
-        <span class="eyebrow">Selected work</span>
-        <h2 class="section-title">The Reel</h2>
-      </div>
-      <div class="reel-toggle" role="tablist" aria-label="Reel orientation">
-        <button type="button" class="reel-toggle-btn is-active" data-view="all" role="tab" aria-selected="true">All Work</button>
-        <button type="button" class="reel-toggle-btn" data-view="landscape" role="tab" aria-selected="false">Films</button>
-        <button type="button" class="reel-toggle-btn" data-view="portrait" role="tab" aria-selected="false">Vertical</button>
-      </div>
-    </div>
-
-    <!-- 🎞️ Each .reel-card needs data-orientation="portrait" or "landscape" — filtered via .reel-toggle -->
-    <div class="reel-grid reveal-stagger" data-view="all">
-
-      <!-- 🔗 Paste this project's Google Drive share link below -->
-      <div class="reel-card stagger-item" data-orientation="landscape" data-drive-url="https://drive.google.com/file/d/1rmEwiETZOfaKV5Ti8nxKuodzsKE7udp0/view?usp=sharing" tabindex="0" role="button" aria-label="Play Veronikka Rebranding">
-        <div class="reel-thumb" style="background:linear-gradient(150deg,#5c1420,#2a0509 70%);"></div>
-        <!-- 🎬 Video is lazy-loaded: set data-src="your-video.mp4" (already set below) -->
-        <video class="reel-video" data-src="projects/VERONIKKA_REVISED_3.mp4" muted loop playsinline preload="none"></video>
-        <div class="reel-tc"><span>SC.01</span><span>03:42</span></div>
-        <div class="play-ring"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8V4z"/></svg></div>
-        <div class="reel-meta">
-          <span class="reel-cat">ADVERTISEMENT</span>
-          <div class="reel-title">VERONIKKA REBRANDING</div>
+  <!-- ABOUT -->
+  <section class="about" id="about" aria-labelledby="about-title">
+    <div class="section-container">
+      <div class="about-grid reveal">
+        <div class="about-frame">
+          <img class="about-placeholder-img" src="assets/IMG_9987.jpeg" alt="Portrait of CEDIREKO Films filmmaker" width="400" height="500" loading="lazy" decoding="async">
+          <span class="frame-tc">PORTRAIT &bull; 4:5</span>
+        </div>
+        <div class="about-text">
+          <div class="section-head">
+            <span class="eyebrow">Behind the lens</span>
+            <h2 id="about-title" class="section-title">About CEDIREKO Films</h2>
+          </div>
+          <!-- TODO: Adjust founder bio copy if desired. Note: Weddings/documentary mentions removed to match the commercial rebranding, music performance, and vertical fashion series shown in the reel. -->
+          <p>CEDIREKO Films is an independent videography practice built on a simple rule: treat every subject the way you'd want to be treated on camera. Specializing in commercial brand narratives, live music performance films, and vertical editorial fashion series, the work focuses on patient framing, honest available light, and intentional pacing.</p>
+          <p>Every project begins with understanding the rhythm of the subject, creating space where people feel comfortable enough to forget the lens is there.</p>
         </div>
       </div>
-
-      <!-- 🔗 Paste this project's Google Drive share link below -->
-      <div class="reel-card stagger-item" data-orientation="landscape" data-drive-url="https://drive.google.com/file/d/1AikiVPPksRjRAgzquLySln9YUB0An44u/view?usp=sharing" tabindex="0" role="button" aria-label="Play EA Performance">
-        <div class="reel-thumb" style="background:linear-gradient(150deg,#7a2233,#3c0008 70%);"></div>
-        <!-- 🎬 Video is lazy-loaded: set data-src="your-video.mp4" (already set below) -->
-        <video class="reel-video" data-src="projects/EA_FINALCUT.mp4" muted loop playsinline preload="none"></video>
-        <div class="reel-tc"><span>SC.02</span><span>01:58</span></div>
-        <div class="play-ring"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8V4z"/></svg></div>
-        <div class="reel-meta">
-          <span class="reel-cat">MUSIC VIDEO</span>
-          <div class="reel-title">EA PERFORMANCE</div>
-        </div>
-      </div>
-
-       <!-- 🔗 Paste this project's Google Drive share link below -->
-      <div class="reel-card stagger-item" data-orientation="portrait" data-drive-url="https://drive.google.com/file/d/1HslynPLnVbk3q7SKQBXoSfOH_mfwrp0j/view?usp=sharing" tabindex="0" role="button" aria-label="Play Fico Mana Cyra">
-        <div class="reel-thumb" style="background:linear-gradient(150deg,#6b1c28,#2a0509 70%);"></div>
-        <!-- 🎬 Video is lazy-loaded: set data-src="your-video.mp4" (already set below) -->
-        <video class="reel-video" data-src="projects/FICOMANA_CYRA_2_1.mp4" muted loop playsinline preload="none"></video>
-        <div class="reel-tc"><span>SC.03</span><span>00:47</span></div>
-        <div class="play-ring"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8V4z"/></svg></div>
-        <div class="reel-meta">
-          <span class="reel-cat">FICO MANA</span>
-          <div class="reel-title">CYRA</div>
-        </div>
-      </div>
-
-       <!-- 🔗 Paste this project's Google Drive share link below -->
-      <div class="reel-card stagger-item" data-orientation="portrait" data-drive-url="https://drive.google.com/file/d/1EMaMXxD_GfWrKqIcIlwz_XCu4UbotDVo/view?usp=sharing" tabindex="0" role="button" aria-label="Play Fico Mana Breanna">
-        <div class="reel-thumb" style="background:linear-gradient(150deg,#6b1c28,#2a0509 70%);"></div>
-        <!-- 🎬 Video is lazy-loaded: set data-src="your-video.mp4" (already set below) -->
-        <video class="reel-video" data-src="projects/BREANNA_1.mp4" muted loop playsinline preload="none"></video>
-        <div class="reel-tc"><span>SC.04</span><span>00:47</span></div>
-        <div class="play-ring"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8V4z"/></svg></div>
-        <div class="reel-meta">
-          <span class="reel-cat">FICO MANA</span>
-          <div class="reel-title">BREANNA</div>
-        </div>
-      </div>
-
-       <!-- 🔗 Paste this project's Google Drive share link below -->
-      <div class="reel-card stagger-item" data-orientation="portrait" data-drive-url="https://drive.google.com/file/d/1m8sYsiDFkflw97CaBlq0caHEnpx-9yvR/view?usp=sharing" tabindex="0" role="button" aria-label="Play Fico Mana Leigh">
-        <div class="reel-thumb" style="background:linear-gradient(150deg,#6b1c28,#2a0509 70%);"></div>
-        <!-- 🎬 Video is lazy-loaded: set data-src="your-video.mp4" (already set below) -->
-        <video class="reel-video" data-src="projects/FICOMANA_LEIGH.mp4" muted loop playsinline preload="none"></video>
-        <div class="reel-tc"><span>SC.05</span><span>00:47</span></div>
-        <div class="play-ring"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8V4z"/></svg></div>
-        <div class="reel-meta">
-          <span class="reel-cat">FICO MANA</span>
-          <div class="reel-title">LEIGH</div>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -268,7 +326,7 @@
         </svg>
       </button>
       <div class="modal-video-container">
-        <video id="modal-video" controls playsinline preload="auto">
+        <video id="modal-video" controls playsinline preload="metadata">
           Your browser does not support native video playback.
         </video>
       </div>
@@ -277,9 +335,11 @@
           <span class="modal-cat" id="modal-cat">CATEGORY</span>
           <h3 class="modal-title" id="modal-title">PROJECT TITLE</h3>
           <span class="modal-tc" id="modal-tc">00:00</span>
+          <div class="modal-specs" id="modal-specs"></div>
         </div>
         <div class="modal-actions">
-          <a id="modal-drive-link" class="btn-external-drive" href="#" target="_blank" rel="noopener" aria-label="Open 4K Master on Google Drive">
+          <!-- TODO: Ensure Google Drive master link points to authenticated 4K ProRes files -->
+          <a id="modal-drive-link" class="btn-external-drive" href="https://drive.google.com" target="_blank" rel="noopener noreferrer" aria-label="Open 4K Master on Google Drive (opens in a new tab)">
             <span>4K Master (Google Drive)</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -290,45 +350,41 @@
     </div>
   </dialog>
 
-  <!-- INQUIRY & CONTACT SECTION -->
-  <section class="inquiry reveal" id="contact" aria-labelledby="inquiry-title">
-    <div class="inquiry-inner">
-      <span class="eyebrow">[ AVAILABLE FOR COMMISSIONS &bull; WORLDWIDE ]</span>
-      <h2 id="inquiry-title" class="inquiry-title">Let's craft something memorable.</h2>
-      <p class="inquiry-lead">Open for commercial campaigns, brand narratives, documentary projects, and milestone films.</p>
-      
-      <div class="inquiry-actions">
-        <a href="mailto:cedirekofilms@gmail.com" class="btn-inquiry" aria-label="Send project inquiry via email">
-          <span>START A CONVERSATION</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-
-      <div class="inquiry-details">
-        <div class="inquiry-detail-item">
-          <span class="detail-label">STUDIO LOCATION</span>
-          <span class="detail-val">Manila, Philippines &bull; Available Worldwide</span>
-        </div>
-        <div class="inquiry-detail-item">
-          <span class="detail-label">DIRECT INQUIRIES</span>
-          <a href="mailto:cedirekofilms@gmail.com" class="detail-val detail-link">cedirekofilms@gmail.com</a>
-        </div>
-        <div class="inquiry-detail-item">
-          <span class="detail-label">SOCIAL</span>
-          <a href="https://instagram.com" target="_blank" rel="noopener" class="detail-val detail-link">@cedirekofilms</a>
-        </div>
-      </div>
+  <!-- CLOSING: Direct work showcase ending with Instagram link -->
+  <section class="closing reveal" id="closing" aria-label="More work">
+    <div class="section-container closing-inner">
+      <span class="eyebrow">[ ARCHIVE &bull; RECENT FRAMES ]</span>
+      <p class="closing-lead">Ongoing visual experiments, recent frame grabs, and behind-the-scenes process.</p>
+      <!-- TODO: Confirm Instagram profile URL (currently set to https://instagram.com/cedirekofilms) -->
+      <a href="https://instagram.com/cedirekofilms" target="_blank" rel="noopener noreferrer" class="btn-instagram" aria-label="View more on Instagram @cedirekofilms (opens in new tab)">
+        <span>More on Instagram</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer">
+<footer class="site-footer" id="contact">
   <div class="footer-inner">
-    <div class="logo-mark"><img src="assets/CEDIREKO PNG.png" alt="CEDIREKO logo" width="58" height="58" decoding="async"></div>
-    <p class="footer-motto">&ldquo;Maging mabait lang palagi.&rdquo;</p>
+    <div class="logo-mark"><img src="assets/CEDIREKO PNG.png" alt="CEDIREKO Films logo" width="58" height="58" decoding="async"></div>
+    <div class="footer-motto-group">
+      <p class="footer-motto">&ldquo;Maging mabait lang palagi.&rdquo;</p>
+      <p class="footer-motto-sub">&ldquo;Always just be kind.&rdquo;</p>
+    </div>
+    <!-- Quiet footer contact line -->
+    <div class="footer-contact">
+      <a href="mailto:cedirekofilms@gmail.com" class="footer-contact-link" aria-label="Email CEDIREKO Films">cedirekofilms@gmail.com</a>
+      <span class="footer-contact-divider" aria-hidden="true">&bull;</span>
+      <!-- TODO: Confirm whether Instagram handle is @cedirekofilms -->
+      <a href="https://instagram.com/cedirekofilms" target="_blank" rel="noopener noreferrer" class="footer-contact-link" aria-label="CEDIREKO Films on Instagram (opens in new tab)">@cedirekofilms</a>
+      <span class="footer-contact-divider" aria-hidden="true">&bull;</span>
+      <span class="footer-location">Manila, PH</span>
+    </div>
     <p class="footer-copyright">&copy; 2026 CEDIREKO FILMS. ALL RIGHTS RESERVED.</p>
   </div>
 </footer>
