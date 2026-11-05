@@ -1175,6 +1175,9 @@ section {
   background:linear-gradient(180deg, transparent 55%, rgba(0,0,0,.55) 100%);
   z-index:1;
 }
+.about-frame picture{
+  display:contents;
+}
 .about-frame .about-placeholder-img{
   position:absolute;
   inset:0;

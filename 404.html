@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scene Not Found — CEDIREKO Films</title>
+<meta name="description" content="Scene not found. Return to the CEDIREKO Films portfolio reel.">
+<meta name="theme-color" content="#3C0008">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/CEDIREKO PNG.png">
+<link rel="stylesheet" href="style.css">
+<style>
+  .error-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    background-color: var(--void);
+  }
+  .error-code {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    color: var(--ember);
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+  }
+  .error-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    color: var(--bone);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .error-desc {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: rgba(244, 233, 222, 0.7);
+    max-width: 42ch;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+  .error-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.75rem 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--bone);
+    border: 1px solid var(--ember);
+    background: rgba(205, 160, 90, 0.08);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .error-cta:hover, .error-cta:focus-visible {
+    background: rgba(205, 160, 90, 0.2);
+    border-color: var(--bone);
+    outline: none;
+  }
+</style>
+</head>
+<body class="error-page">
+  <div class="letterbox top" aria-hidden="true"></div>
+  <div class="letterbox bottom" aria-hidden="true"></div>
+  
+  <div class="hero__viewfinder" aria-hidden="true">
+    <span class="hero-tc bl">00:00:04:04</span>
+    <span class="hero-tc br">REC <span class="tally-dot" aria-hidden="true">&bull;</span></span>
+  </div>
+
+  <main>
+    <div class="error-code">SCENE 404 &bull; OUT OF FRAME</div>
+    <h1 class="error-title">Scene Not Found</h1>
+    <p class="error-desc">The take you are looking for does not exist or has been cut from the final reel.</p>
+    <a href="./" class="error-cta">Return to The Reel</a>
+  </main>
+</body>
+</html>
