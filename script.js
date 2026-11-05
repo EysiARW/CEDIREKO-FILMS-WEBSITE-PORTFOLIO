@@ -520,6 +520,10 @@ class VideoModalPlayerController {
       });
     }
 
+    if (this.#dialog && driveUrl) {
+      this.#dialog.setAttribute('data-drive-url', driveUrl);
+    }
+
     if (this.#driveLink) {
       const validDrive = driveUrl && driveUrl !== '#' ? driveUrl : 'https://drive.google.com';
       this.#driveLink.href = validDrive;
