@@ -323,15 +323,11 @@ suite.test('Typography: Google Fonts link loads Fraunces, Manrope, and Space Mon
   Assert.ok(dom.contains('family=Space+Mono'), 'HTML must link Space Mono font');
 });
 
-suite.test('Assets: style.css references assets/topo.png and produces zero asset 404s', async ({ server }) => {
+suite.test('Assets: style.css produces zero asset 404s during runtime execution', async ({ server }) => {
   const cssContent = fs.readFileSync(CSS_PATH, 'utf8');
   Assert.ok(
     !cssContent.includes('url("topo.png")') && !cssContent.includes("url('topo.png')"),
-    'style.css must not reference un-namespaced topo.png which produces an HTTP 404'
-  );
-  Assert.ok(
-    cssContent.includes('assets/topo.png'),
-    'style.css must reference assets/topo.png'
+    'style.css must not reference obsolete or un-namespaced topo.png'
   );
 
   const nonFavicon404s = server.errors404.filter(e => !e.url.includes('favicon.ico'));
@@ -342,17 +338,18 @@ suite.test('Assets: style.css references assets/topo.png and produces zero asset
   );
 });
 
-suite.test('Assets: Topographic ambient asset (assets/topo.png) returns HTTP 200 OK', async ({ serverUrl }) => {
-  const res = await fetch(`${serverUrl}/assets/topo.png`);
-  Assert.strictEqual(res.status, 200, 'assets/topo.png must return HTTP 200 OK');
-});
-
-suite.test('Assets: Logo and Director portrait return HTTP 200 OK', async ({ serverUrl }) => {
+suite.test('Assets: Core visual identity assets (Logo, Portrait, Posters) return HTTP 200 OK', async ({ serverUrl }) => {
   const resLogo = await fetch(`${serverUrl}/assets/CEDIREKO%20PNG.png`);
   Assert.strictEqual(resLogo.status, 200, 'assets/CEDIREKO PNG.png must return HTTP 200 OK');
 
-  const resPortrait = await fetch(`${serverUrl}/assets/IMG_9987.jpeg`);
-  Assert.strictEqual(resPortrait.status, 200, 'assets/IMG_9987.jpeg must return HTTP 200 OK');
+  const resPortraitWebp = await fetch(`${serverUrl}/assets/founder-portrait.webp`);
+  Assert.strictEqual(resPortraitWebp.status, 200, 'assets/founder-portrait.webp must return HTTP 200 OK');
+
+  const resPortraitJpg = await fetch(`${serverUrl}/assets/founder-portrait.jpg`);
+  Assert.strictEqual(resPortraitJpg.status, 200, 'assets/founder-portrait.jpg must return HTTP 200 OK');
+
+  const resMasterPortrait = await fetch(`${serverUrl}/assets/IMG_9987.jpeg`);
+  Assert.strictEqual(resMasterPortrait.status, 200, 'assets/IMG_9987.jpeg must return HTTP 200 OK');
 });
 
 module.exports = suite;
