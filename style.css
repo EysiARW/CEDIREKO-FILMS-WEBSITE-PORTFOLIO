@@ -1094,7 +1094,7 @@ section {
 }
 
 .reel-grid[data-view="all"] .reel-card[data-orientation="landscape"] {
-  aspect-ratio: 2.39 / 1;
+  aspect-ratio: 16 / 10;
 }
 
 .reel-grid[data-view="all"] .reel-card[data-orientation="portrait"] {
@@ -1117,7 +1117,7 @@ section {
 }
 
 .reel-grid[data-view="landscape"] .reel-card {
-  aspect-ratio: 2.39 / 1;
+  aspect-ratio: 16 / 10;
 }
 
 @media (min-width: 640px) {
@@ -1580,51 +1580,6 @@ dialog#video-modal::backdrop {
 }
 
 /* ==========================================================================
-   DESKTOP CUSTOM "PLAY" CURSOR
-   ========================================================================== */
-
-.custom-play-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--ember);
-  color: var(--frame);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.3);
-  transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-}
-
-.custom-play-cursor.is-active {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .reel-card:hover {
-    cursor: none;
-  }
-}
-
-@media (hover: none) or (pointer: coarse) {
-  .custom-play-cursor {
-    display: none !important;
-  }
-}
-
-/* ==========================================================================
    ACCESSIBILITY: PREFERS REDUCED MOTION
    ========================================================================== */
 
@@ -1658,10 +1613,6 @@ dialog#video-modal::backdrop {
   }
 
   .hero__video-media {
-    display: none !important;
-  }
-
-  .custom-play-cursor {
     display: none !important;
   }
 }

@@ -13,8 +13,8 @@ Official videography portfolio for **CEDIREKO Films**, an independent filmmaking
 
 | Title | Category | Format | Ratio | Source |
 | :--- | :--- | :--- | :--- | :--- |
-| **VERONIKKA REBRANDING** | Advertisement | Film / Landscape | 2.39:1 | Commercial campaign |
-| **EA PERFORMANCE** | Music Video | Film / Landscape | 2.39:1 | Live music performance |
+| **VERONIKKA REBRANDING** | Advertisement | Film / Landscape | 16:10 | Commercial campaign |
+| **EA PERFORMANCE** | Music Video | Film / Landscape | 16:10 | Live music performance |
 | **FICO MANA — Cyra** | Fashion Reel | Vertical Reel | 9:16 | Editorial fashion narrative |
 | **FICO MANA — Breanna** | Fashion Reel | Vertical Reel | 9:16 | Editorial fashion narrative |
 | **FICO MANA — Leigh** | Fashion Reel | Vertical Reel | 9:16 | Editorial fashion narrative |
