@@ -69,11 +69,10 @@ suite.test('Hero: Camera HUD timecodes and status indicators are rendered', asyn
   );
 });
 
-suite.test('Hero: Scroll cue indicator is present with link or cue to reel', async ({ browser }) => {
-  const scrollCue = await browser.evaluate("(() => {\n    const el = document.querySelector('.scroll-cue, a[href=\"#reel\"], .scroll-indicator');\n    return el ? el.textContent.trim() : null;\n  })()");
+suite.test('Hero: Obsolete scroll prompt is completely swept from DOM', async ({ browser }) => {
+  const scrollCueExists = await browser.evaluate("(() => {\n    const el = document.querySelector('.scroll-cue, .hero__scroll-cue, .scroll-indicator');\n    return el !== null;\n  })()");
 
-  Assert.ok(scrollCue !== null, 'Hero must have a scroll cue element (.scroll-cue)');
-  Assert.ok(scrollCue.toLowerCase().includes('scroll') || scrollCue.length >= 0, 'Scroll cue must be visible');
+  Assert.isFalse(scrollCueExists, 'Hero must not have any scroll cue element (.scroll-cue)');
 });
 
 // ============================================================================

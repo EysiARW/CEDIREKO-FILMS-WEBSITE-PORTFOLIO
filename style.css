@@ -813,57 +813,6 @@ main, footer {
   margin: 0;
 }
 
-/* Interactive Scroll Indicator Cue */
-.hero__scroll-cue {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-2);
-  text-decoration: none;
-  color: var(--bone);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  cursor: pointer;
-  margin-top: var(--space-4);
-  padding: var(--space-2);
-  border-radius: var(--radius);
-  animation: bounce-subtle 2.6s ease-in-out infinite;
-  transition: color var(--duration-fast) var(--ease);
-}
-
-.hero__scroll-cue:hover,
-.hero__scroll-cue:focus-visible {
-  color: var(--color-accent);
-  outline: 2px solid var(--color-accent);
-  outline-offset: 4px;
-}
-
-.scroll-cue__line {
-  display: block;
-  width: 1px;
-  height: 26px;
-  background: linear-gradient(to bottom, var(--color-accent) 0%, rgba(205, 160, 90, 0.2) 80%, transparent 100%);
-  animation: pulse-line 2s ease-in-out infinite;
-}
-
-.scroll-cue__text {
-  font-size: var(--text-xs);
-  letter-spacing: 0.22em;
-  color: inherit;
-}
-
-@keyframes bounce-subtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(5px); }
-}
-
-@keyframes pulse-line {
-  0%, 100% { opacity: 0.4; transform: scaleY(0.85); }
-  50% { opacity: 1; transform: scaleY(1); }
-}
-
 /* ==========================================================================
    SECTION SHELL & CONTAINER ARCHITECTURE
    Consistent max-width, horizontal padding, and vertical rhythm
@@ -1606,8 +1555,6 @@ dialog#video-modal::backdrop {
     transform: none !important;
   }
 
-  .scroll-cue,
-  .scroll-cue__line,
   .tally-dot {
     animation: none !important;
   }
