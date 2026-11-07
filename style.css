@@ -627,6 +627,34 @@ main, footer {
   overflow: hidden;
 }
 
+/* Ambient Loop Video Background */
+.hero__video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero__video-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.32;
+  filter: saturate(0.85) contrast(1.1);
+  transform: scale(1.02);
+}
+
+.hero__video-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 75% at 50% 50%, rgba(60, 0, 8, 0.45) 0%, rgba(18, 2, 5, 0.88) 75%),
+    linear-gradient(to bottom, rgba(18, 2, 5, 0.75) 0%, transparent 25%, transparent 75%, rgba(18, 2, 5, 0.95) 100%);
+}
+
 /* Cinema Letterbox Scope Framing Bars (2.39:1 Anamorphic Cue) */
 .letterbox {
   position: absolute;
@@ -920,6 +948,27 @@ section {
   max-width: 52ch;
 }
 
+.about-credits {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.about-credits-item {
+  color: var(--bone-dim);
+}
+
+.about-credits-dot {
+  color: var(--ember);
+}
+
 @media (min-width: 860px) {
   .about-grid {
     grid-template-columns: 0.85fr 1.15fr;
@@ -1045,7 +1094,7 @@ section {
 }
 
 .reel-grid[data-view="all"] .reel-card[data-orientation="landscape"] {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 2.39 / 1;
 }
 
 .reel-grid[data-view="all"] .reel-card[data-orientation="portrait"] {
@@ -1068,7 +1117,7 @@ section {
 }
 
 .reel-grid[data-view="landscape"] .reel-card {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 2.39 / 1;
 }
 
 @media (min-width: 640px) {
@@ -1232,14 +1281,29 @@ section {
   pointer-events: none;
 }
 
+.reel-meta-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+.reel-scene {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  color: var(--ash-rose);
+  line-height: 1;
+}
+
 .reel-cat {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ember);
-  margin-bottom: var(--space-1);
-  display: block;
+  line-height: 1;
+  display: inline-block;
 }
 
 .reel-title {
@@ -1348,12 +1412,27 @@ dialog#video-modal::backdrop {
   gap: var(--space-1);
 }
 
+.modal-meta-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.modal-scene {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  color: var(--ash-rose);
+  line-height: 1;
+}
+
 .modal-cat {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ember);
+  line-height: 1;
 }
 
 .modal-title {
@@ -1380,6 +1459,45 @@ dialog#video-modal::backdrop {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--bone-dim);
+}
+
+/* Modal Transport: Prev / Next Viewer Controls */
+.modal-transport {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-left: auto;
+}
+
+.modal-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  min-height: 44px;
+  background: rgba(24, 3, 7, 0.7);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--bone);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+
+.modal-nav-btn:hover {
+  background: var(--wine);
+  border-color: var(--ember);
+  color: var(--ember);
+}
+
+.modal-nav-btn:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
 }
 
 /* ==========================================================================
@@ -1462,6 +1580,51 @@ dialog#video-modal::backdrop {
 }
 
 /* ==========================================================================
+   DESKTOP CUSTOM "PLAY" CURSOR
+   ========================================================================== */
+
+.custom-play-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--ember);
+  color: var(--frame);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.3);
+  transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.custom-play-cursor.is-active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .reel-card:hover {
+    cursor: none;
+  }
+}
+
+@media (hover: none) or (pointer: coarse) {
+  .custom-play-cursor {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
    ACCESSIBILITY: PREFERS REDUCED MOTION
    ========================================================================== */
 
@@ -1492,5 +1655,13 @@ dialog#video-modal::backdrop {
   .scroll-cue__line,
   .tally-dot {
     animation: none !important;
+  }
+
+  .hero__video-media {
+    display: none !important;
+  }
+
+  .custom-play-cursor {
+    display: none !important;
   }
 }

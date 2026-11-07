@@ -241,6 +241,28 @@ suite.test('Video Modal: External Google Drive master link is removed', async ({
   Assert.isFalse(driveLink, 'External Google Drive master fallback links must be completely removed');
 });
 
+suite.test('Video Modal: Previous and next buttons allow sequential playback navigation across all projects', async ({ browser }) => {
+  // Re-open first card
+  await browser.evaluate("(() => {\n    const firstCard = document.querySelector('.reel-card');\n    if (firstCard) firstCard.click();\n  })()");
+
+  const initialTitle = await browser.evaluate("document.querySelector('#modal-title')?.textContent?.trim()");
+
+  // Click next button
+  await browser.evaluate("(() => {\n    const nextBtn = document.querySelector('#modal-next-btn, .modal-next');\n    if (nextBtn) nextBtn.click();\n  })()");
+
+  const secondTitle = await browser.evaluate("document.querySelector('#modal-title')?.textContent?.trim()");
+  Assert.ok(secondTitle && secondTitle !== initialTitle, 'Next button must advance to the next project');
+
+  // Click prev button
+  await browser.evaluate("(() => {\n    const prevBtn = document.querySelector('#modal-prev-btn, .modal-prev');\n    if (prevBtn) prevBtn.click();\n  })()");
+
+  const returnedTitle = await browser.evaluate("document.querySelector('#modal-title')?.textContent?.trim()");
+  Assert.strictEqual(returnedTitle, initialTitle, 'Prev button must return to initial project');
+
+  // Dismiss modal
+  await browser.pressKey('Escape');
+});
+
 // ============================================================================
 // 5. NAVIGATION HEADER (>=5 tests)
 // ============================================================================

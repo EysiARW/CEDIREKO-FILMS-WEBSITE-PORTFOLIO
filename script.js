@@ -382,7 +382,8 @@ class ReelFilterController {
 /**
  * VideoModalPlayerController
  * Manages native HTML5 <dialog> modal player lifecycle, video buffering,
- * keyboard accessibility, scroll locking, and light dismiss.
+ * sequential transport navigation (prev/next), keyboard accessibility,
+ * scroll locking, and light dismiss.
  */
 class VideoModalPlayerController {
   #dialog;
@@ -390,7 +391,12 @@ class VideoModalPlayerController {
   #title;
   #cat;
   #tc;
+  #scene;
   #closeBtn;
+  #prevBtn;
+  #nextBtn;
+  #cards;
+  #currentIndex;
   #lastActiveElement;
   #mouseDownInside;
 
@@ -402,9 +408,17 @@ class VideoModalPlayerController {
     this.#title = this.#dialog.querySelector('#modal-title');
     this.#cat = this.#dialog.querySelector('#modal-cat');
     this.#tc = this.#dialog.querySelector('#modal-tc');
+    this.#scene = this.#dialog.querySelector('#modal-scene');
     this.#closeBtn = this.#dialog.querySelector('.modal-close, button[aria-label*="close" i]');
+    this.#prevBtn = this.#dialog.querySelector('#modal-prev-btn, .modal-prev');
+    this.#nextBtn = this.#dialog.querySelector('#modal-next-btn, .modal-next');
+
+    this.#cards = Array.from(document.querySelectorAll('.reel-card'));
+    this.#currentIndex = -1;
     this.#lastActiveElement = null;
     this.#mouseDownInside = false;
+
+    this.navigate = this.navigate.bind(this);
 
     this.init();
   }
@@ -417,15 +431,34 @@ class VideoModalPlayerController {
       this.close();
     });
 
+    // Transport buttons: previous / next project
+    this.#prevBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.navigate(-1);
+    });
+
+    this.#nextBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.navigate(1);
+    });
+
     // Native cancel event (e.g. Esc key)
     this.#dialog.addEventListener('cancel', () => {
       this.#cleanupMedia();
     });
 
-    // Explicit Escape key fallback for headless and standard browsers
+    // Keyboard controls when modal is active: Escape, ArrowLeft, ArrowRight
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.#dialog && this.#dialog.open) {
+      if (!this.#dialog || !this.#dialog.open) return;
+
+      if (e.key === 'Escape') {
         this.close();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        this.navigate(-1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        this.navigate(1);
       }
     });
 
@@ -489,20 +522,50 @@ class VideoModalPlayerController {
     });
   }
 
-  open(card) {
+  /**
+   * Navigates sequentially across the reel items
+   * @param {number} delta - (-1 for previous, +1 for next)
+   */
+  navigate(delta) {
+    if (!this.#cards.length || this.#currentIndex < 0) return;
+    const total = this.#cards.length;
+    const nextIndex = (this.#currentIndex + delta + total) % total;
+    this.open(this.#cards[nextIndex]);
+  }
+
+  open(cardOrIndex) {
     if (!this.#dialog) return;
 
-    this.#lastActiveElement = document.activeElement;
+    if (!this.#cards.length) {
+      this.#cards = Array.from(document.querySelectorAll('.reel-card'));
+    }
+
+    let card;
+    if (typeof cardOrIndex === 'number') {
+      this.#currentIndex = (cardOrIndex + this.#cards.length) % this.#cards.length;
+      card = this.#cards[this.#currentIndex];
+    } else {
+      card = cardOrIndex;
+      this.#currentIndex = this.#cards.indexOf(card);
+    }
+
+    if (!card) return;
+
+    if (!this.#dialog.open) {
+      this.#lastActiveElement = document.activeElement;
+    }
 
     const videoEl = card.querySelector('.reel-video, video');
     const src = videoEl?.dataset.src || videoEl?.src || '';
     const title = card.querySelector('.reel-title, h3')?.textContent?.trim() || 'FEATURED WORK';
     const cat = card.querySelector('.reel-cat')?.textContent?.trim() || 'COMMERCIAL';
     const tc = card.querySelector('.reel-tc span:last-child')?.textContent?.trim() || '00:00';
+    const scene = card.dataset.scene || card.querySelector('.reel-scene')?.textContent?.trim() || `SC.0${this.#currentIndex + 1}`;
 
     if (this.#title) this.#title.textContent = title;
     if (this.#cat) this.#cat.textContent = cat;
     if (this.#tc) this.#tc.textContent = tc;
+    if (this.#scene) this.#scene.textContent = scene;
 
     // Structured metadata synchronization
     const specsContainer = this.#dialog.querySelector('#modal-specs');
@@ -531,13 +594,14 @@ class VideoModalPlayerController {
 
     document.body.style.overflow = 'hidden';
 
-    if (typeof this.#dialog.showModal === 'function') {
-      this.#dialog.showModal();
-    } else {
-      this.#dialog.setAttribute('open', '');
+    if (!this.#dialog.open) {
+      if (typeof this.#dialog.showModal === 'function') {
+        this.#dialog.showModal();
+      } else {
+        this.#dialog.setAttribute('open', '');
+      }
+      this.#closeBtn?.focus();
     }
-
-    this.#closeBtn?.focus();
   }
 
   close() {
@@ -565,6 +629,7 @@ class VideoModalPlayerController {
       this.#lastActiveElement.focus();
     }
     this.#lastActiveElement = null;
+    this.#currentIndex = -1;
   }
 }
 
@@ -668,6 +733,95 @@ class MediaPreviewController {
 }
 
 /**
+ * CustomPlayCursorController
+ * Manages floating desktop custom "PLAY" badge cursor for reel video cards.
+ * Automatically disabled on touch / non-hover viewports.
+ */
+class CustomPlayCursorController {
+  #cursor;
+  #cards;
+  #isActive;
+  #targetX;
+  #targetY;
+  #rafId;
+
+  constructor(options = {}) {
+    this.options = Object.assign({
+      cursorSelector: '#custom-play-cursor, .custom-play-cursor',
+      cardsSelector: '.reel-card',
+      activeClass: 'is-active'
+    }, options);
+
+    this.#cursor = document.querySelector(this.options.cursorSelector);
+    this.#cards = document.querySelectorAll(this.options.cardsSelector);
+    this.#isActive = false;
+    this.#targetX = 0;
+    this.#targetY = 0;
+    this.#rafId = null;
+
+    this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.handleCardEnter = this.handleCardEnter.bind(this);
+    this.handleCardLeave = this.handleCardLeave.bind(this);
+    this.render = this.render.bind(this);
+
+    this.init();
+  }
+
+  init() {
+    if (!this.#cursor || !this.#cards.length) return;
+
+    // Check if device supports fine hover pointer
+    const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!supportsHover) return;
+
+    document.addEventListener('mousemove', this.handleMouseMove, { passive: true });
+
+    this.#cards.forEach(card => {
+      card.addEventListener('mouseenter', this.handleCardEnter);
+      card.addEventListener('mouseleave', this.handleCardLeave);
+    });
+  }
+
+  handleMouseMove(e) {
+    this.#targetX = e.clientX;
+    this.#targetY = e.clientY;
+
+    if (!this.#rafId) {
+      this.#rafId = window.requestAnimationFrame(this.render);
+    }
+  }
+
+  render() {
+    if (this.#cursor) {
+      this.#cursor.style.transform = `translate3d(${this.#targetX}px, ${this.#targetY}px, 0) translate(-50%, -50%) ${this.#isActive ? 'scale(1)' : 'scale(0.3)'}`;
+    }
+    this.#rafId = null;
+  }
+
+  handleCardEnter() {
+    this.#isActive = true;
+    this.#cursor?.classList.add(this.options.activeClass);
+  }
+
+  handleCardLeave() {
+    this.#isActive = false;
+    this.#cursor?.classList.remove(this.options.activeClass);
+  }
+
+  destroy() {
+    document.removeEventListener('mousemove', this.handleMouseMove);
+    this.#cards.forEach(card => {
+      card.removeEventListener('mouseenter', this.handleCardEnter);
+      card.removeEventListener('mouseleave', this.handleCardLeave);
+    });
+    if (this.#rafId) {
+      window.cancelAnimationFrame(this.#rafId);
+      this.#rafId = null;
+    }
+  }
+}
+
+/**
  * PortfolioApp
  * Global coordinator and entry point initialized on DOMContentLoaded.
  */
@@ -677,6 +831,7 @@ class PortfolioApp {
     this.reelFilter = null;
     this.videoModal = null;
     this.mediaPreview = null;
+    this.customCursor = null;
     this.isInitialized = false;
   }
 
@@ -687,6 +842,7 @@ class PortfolioApp {
     this.reelFilter = new ReelFilterController();
     this.videoModal = new VideoModalPlayerController();
     this.mediaPreview = new MediaPreviewController(this.videoModal);
+    this.customCursor = new CustomPlayCursorController();
 
     this.isInitialized = true;
   }

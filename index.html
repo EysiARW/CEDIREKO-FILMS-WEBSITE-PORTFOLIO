@@ -132,6 +132,14 @@
 
   <!-- HERO: Cinematic Showcase -->
   <section class="hero" id="hero" aria-labelledby="hero-title">
+    <!-- Ambient looping cinematic video background -->
+    <div class="hero__video-bg" aria-hidden="true">
+      <video class="hero__video-media" autoplay muted loop playsinline preload="metadata" poster="assets/posters/ea.jpg">
+        <source src="projects/EA_FINALCUT.mp4" type="video/mp4">
+      </video>
+      <div class="hero__video-overlay"></div>
+    </div>
+
     <!-- Letterbox cinema framing bars -->
     <div class="letterbox top" aria-hidden="true"></div>
     <div class="letterbox bottom" aria-hidden="true"></div>
@@ -183,6 +191,11 @@
             <h2 id="about-title" class="section-title">About</h2>
           </div>
           <p class="about-bio">CEDIREKO is a one-person videography studio. Every subject is treated the way I&rsquo;d want to be treated on camera, with patient framing, honest color, and sound that breathes.</p>
+          <div class="about-credits">
+            <span class="about-credits-item">Cinematography &amp; Direction</span>
+            <span class="about-credits-dot" aria-hidden="true">&bull;</span>
+            <span class="about-credits-item">Manila, Philippines</span>
+          </div>
         </div>
       </div>
     </div>
@@ -207,25 +220,31 @@
       <div class="reel-grid reveal-stagger" id="reel-grid" data-view="all" role="tabpanel" aria-labelledby="tab-all">
 
         <!-- Project 01: Veronikka Rebranding -->
-        <div class="reel-card stagger-item" data-orientation="landscape" data-seek-time="1.0" tabindex="0" role="button" aria-label="Play Veronikka Rebranding (Advertisement)">
+        <div class="reel-card stagger-item" data-orientation="landscape" data-scene="SC.01" data-seek-time="1.0" tabindex="0" role="button" aria-label="Play Veronikka Rebranding (Advertisement)">
           <div class="reel-thumb" style="background:linear-gradient(150deg,#5c1420,#2a0509 70%);"></div>
           <video class="reel-video" data-src="projects/VERONIKKA_REVISED_3.mp4" poster="assets/posters/veronikka.jpg" muted loop playsinline preload="metadata"></video>
           <div class="reel-tc"><span>03:42</span></div>
           <div class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg></div>
           <div class="reel-meta">
-            <span class="reel-cat">ADVERTISEMENT</span>
+            <div class="reel-meta-eyebrow">
+              <span class="reel-scene" aria-hidden="true">SC.01</span>
+              <span class="reel-cat">ADVERTISEMENT</span>
+            </div>
             <h3 class="reel-title">VERONIKKA REBRANDING</h3>
           </div>
         </div>
 
         <!-- Project 02: EA Performance -->
-        <div class="reel-card stagger-item" data-orientation="landscape" data-seek-time="2.0" tabindex="0" role="button" aria-label="Play EA Performance (Music Video)">
+        <div class="reel-card stagger-item" data-orientation="landscape" data-scene="SC.02" data-seek-time="2.0" tabindex="0" role="button" aria-label="Play EA Performance (Music Video)">
           <div class="reel-thumb" style="background:linear-gradient(150deg,#7a2233,#3c0008 70%);"></div>
           <video class="reel-video" data-src="projects/EA_FINALCUT.mp4" poster="assets/posters/ea.jpg" muted loop playsinline preload="metadata"></video>
           <div class="reel-tc"><span>01:58</span></div>
           <div class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg></div>
           <div class="reel-meta">
-            <span class="reel-cat">MUSIC VIDEO</span>
+            <div class="reel-meta-eyebrow">
+              <span class="reel-scene" aria-hidden="true">SC.02</span>
+              <span class="reel-cat">MUSIC VIDEO</span>
+            </div>
             <h3 class="reel-title">EA PERFORMANCE</h3>
           </div>
         </div>
@@ -240,37 +259,46 @@
         </div>
 
         <!-- Project 03: FICO MANA — Cyra -->
-        <div class="reel-card stagger-item" data-orientation="portrait" data-series="ficomana" data-seek-time="1.5" tabindex="0" role="button" aria-label="Play Fico Mana Cyra (Vertical Series Pt. 1)">
+        <div class="reel-card stagger-item" data-orientation="portrait" data-series="ficomana" data-scene="SC.03" data-seek-time="1.5" tabindex="0" role="button" aria-label="Play Fico Mana Cyra (Vertical Series Pt. 1)">
           <div class="reel-thumb" style="background:linear-gradient(150deg,#6b1c28,#2a0509 70%);"></div>
           <video class="reel-video" data-src="projects/FICOMANA_CYRA_2_1.mp4" poster="assets/posters/ficomana_cyra.jpg" muted loop playsinline preload="metadata"></video>
           <div class="reel-tc"><span>00:47</span></div>
           <div class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg></div>
           <div class="reel-meta">
-            <span class="reel-cat">FASHION REEL</span>
+            <div class="reel-meta-eyebrow">
+              <span class="reel-scene" aria-hidden="true">SC.03</span>
+              <span class="reel-cat">FASHION REEL</span>
+            </div>
             <h3 class="reel-title">CYRA</h3>
           </div>
         </div>
 
         <!-- Project 04: FICO MANA — Breanna -->
-        <div class="reel-card stagger-item" data-orientation="portrait" data-series="ficomana" data-seek-time="1.5" tabindex="0" role="button" aria-label="Play Fico Mana Breanna (Vertical Series Pt. 2)">
+        <div class="reel-card stagger-item" data-orientation="portrait" data-series="ficomana" data-scene="SC.04" data-seek-time="1.5" tabindex="0" role="button" aria-label="Play Fico Mana Breanna (Vertical Series Pt. 2)">
           <div class="reel-thumb" style="background:linear-gradient(150deg,#6b1c28,#2a0509 70%);"></div>
           <video class="reel-video" data-src="projects/BREANNA_1.mp4" poster="assets/posters/ficomana_breanna.jpg" muted loop playsinline preload="metadata"></video>
           <div class="reel-tc"><span>00:47</span></div>
           <div class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg></div>
           <div class="reel-meta">
-            <span class="reel-cat">FASHION REEL</span>
+            <div class="reel-meta-eyebrow">
+              <span class="reel-scene" aria-hidden="true">SC.04</span>
+              <span class="reel-cat">FASHION REEL</span>
+            </div>
             <h3 class="reel-title">BREANNA</h3>
           </div>
         </div>
 
         <!-- Project 05: FICO MANA — Leigh -->
-        <div class="reel-card stagger-item" data-orientation="portrait" data-series="ficomana" data-seek-time="1.5" tabindex="0" role="button" aria-label="Play Fico Mana Leigh (Vertical Series Pt. 3)">
+        <div class="reel-card stagger-item" data-orientation="portrait" data-series="ficomana" data-scene="SC.05" data-seek-time="1.5" tabindex="0" role="button" aria-label="Play Fico Mana Leigh (Vertical Series Pt. 3)">
           <div class="reel-thumb" style="background:linear-gradient(150deg,#6b1c28,#2a0509 70%);"></div>
           <video class="reel-video" data-src="projects/FICOMANA_LEIGH.mp4" poster="assets/posters/ficomana_leigh.jpg" muted loop playsinline preload="metadata"></video>
           <div class="reel-tc"><span>00:47</span></div>
           <div class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg></div>
           <div class="reel-meta">
-            <span class="reel-cat">FASHION REEL</span>
+            <div class="reel-meta-eyebrow">
+              <span class="reel-scene" aria-hidden="true">SC.05</span>
+              <span class="reel-cat">FASHION REEL</span>
+            </div>
             <h3 class="reel-title">LEIGH</h3>
           </div>
         </div>
@@ -297,14 +325,38 @@
       </div>
       <div class="modal-info">
         <div class="modal-meta-left">
-          <span class="modal-cat" id="modal-cat">ADVERTISEMENT</span>
+          <div class="modal-meta-eyebrow">
+            <span class="modal-scene" id="modal-scene">SC.01</span>
+            <span class="modal-cat" id="modal-cat">ADVERTISEMENT</span>
+          </div>
           <h3 class="modal-title" id="modal-title">VERONIKKA REBRANDING</h3>
           <span class="modal-tc" id="modal-tc">03:42</span>
           <div class="modal-specs" id="modal-specs"></div>
         </div>
+
+        <!-- Cinema Viewer Transport: Prev / Next Navigation -->
+        <div class="modal-transport" aria-label="Reel transport controls">
+          <button type="button" class="modal-nav-btn modal-prev" id="modal-prev-btn" aria-label="Previous project (Left Arrow)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span class="modal-nav-text">PREV</span>
+          </button>
+          <button type="button" class="modal-nav-btn modal-next" id="modal-next-btn" aria-label="Next project (Right Arrow)">
+            <span class="modal-nav-text">NEXT</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </dialog>
+
+  <!-- Desktop Custom Play Cursor -->
+  <div class="custom-play-cursor" id="custom-play-cursor" aria-hidden="true">
+    <span>PLAY</span>
+  </div>
 
 <!-- SITE FOOTER -->
 <footer class="site-footer" id="contact">
