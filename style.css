@@ -1173,14 +1173,13 @@ section {
   pointer-events: none;
 }
 
-/* Telemetry Slate Bar (Scene Number + Duration) */
+/* Duration Timecode Badge */
 .reel-tc {
   position: absolute;
   top: var(--space-3);
-  left: var(--space-4);
   right: var(--space-4);
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.06em;

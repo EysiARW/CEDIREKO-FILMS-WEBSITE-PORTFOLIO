@@ -113,16 +113,14 @@ suite.test('Reel: Project cards display editorial categories (Commercial, Music 
   Assert.ok(catsJoined.includes('FICO') || catsJoined.includes('FASHION') || catsJoined.includes('REEL'), 'Editorial/fashion category must be displayed');
 });
 
-suite.test('Reel: Scene numbers SC.01 through SC.05 are assigned and unique across projects', async ({ browser }) => {
-  const sceneTags = await browser.evaluate("(() => {\n    const tags = Array.from(document.querySelectorAll('.reel-card .reel-tc span:first-child, .scene-tag, [data-scene]'));\n    return tags.map(t => t.textContent.trim());\n  })()");
+suite.test('Reel: Project cards display duration timecodes without scene indexing', async ({ browser }) => {
+  const timecodes = await browser.evaluate("(() => {\n    const tags = Array.from(document.querySelectorAll('.reel-card .reel-tc'));\n    return tags.map(t => t.textContent.trim());\n  })()");
 
-  Assert.greaterThanOrEqual(sceneTags.length, 5, 'Each card must have a scene number');
-  const uniqueTags = new Set(sceneTags);
-  Assert.strictEqual(
-    uniqueTags.size,
-    sceneTags.length,
-    `Scene numbers must be unique across all 5 projects (found: ${sceneTags.join(', ')})`
-  );
+  Assert.greaterThanOrEqual(timecodes.length, 5, 'Each card must have a duration timecode');
+  timecodes.forEach(tc => {
+    Assert.ok(/\d{2}:\d{2}/.test(tc), `Timecode must contain duration format MM:SS (got: ${tc})`);
+    Assert.ok(!tc.includes('SC.'), `Timecode must not contain scene index SC. (got: ${tc})`);
+  });
 });
 
 suite.test('Reel: Video preview elements bind to valid local MP4 paths in projects/', async ({ browser }) => {
