@@ -1,9 +1,9 @@
 # CEDIREKO FILMS — Videography Portfolio (2026)
 
-[![Vanilla Web](https://img.shields.io/badge/Stack-HTML5%20%7C%20CSS3%20%7C%20ES6+-wine?style=flat-square)](https://github.com/EysiARW/CEDIREKO-FILMS-WEBSITE-PORTFOLIO)
+[![Vanilla Web](https://img.shields.io/badge/Stack-HTML5%20%7C%20CSS3%20%7C%20ES6+-wine?style=flat-square)](https://github.com/EysiARW/Cedireko-Films)
 [![Accessibility](https://img.shields.io/badge/WCAG%202.1-AA%20Compliant-ember?style=flat-square)](https://www.w3.org/WAI/standards-guidelines/wcag/)
 [![Tests](https://img.shields.io/badge/Tests-82%20Passing-success?style=flat-square)](tests/)
-[![GitHub Pages](https://img.shields.io/badge/Host-GitHub%20Pages-black?style=flat-square&logo=github)](https://eysiarw.github.io/CEDIREKO-FILMS-WEBSITE-PORTFOLIO/)
+[![GitHub Pages](https://img.shields.io/badge/Host-GitHub%20Pages-black?style=flat-square&logo=github)](https://eysiarw.github.io/Cedireko-Films/)
 
 Official videography portfolio for **CEDIREKO Films**, an independent filmmaking practice based in Manila, Philippines. Focused on commercial brand campaigns, live music performance films, and vertical editorial fashion narratives crafted with patient framing, honest available light, and quiet human intimacy.
 
