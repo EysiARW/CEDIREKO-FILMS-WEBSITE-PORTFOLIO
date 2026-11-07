@@ -55,21 +55,20 @@
   <!-- Skip link for keyboard accessibility (WCAG 2.4.1) -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <div class="topo-bg" aria-hidden="true"></div>
-
-<div class="grain" aria-hidden="true"></div>
+  <!-- Subtle analog film grain texture -->
+  <div class="grain" aria-hidden="true"></div>
 
   <!-- SITE HEADER: Dual-state fixed translucent header -->
   <header class="site-header" id="site-header">
     <div class="site-header__container">
       
-      <!-- Left: Studio Brand & Logo Link -->
+      <!-- Studio Brand & Logo Link -->
       <a href="#hero" class="site-header__brand" aria-label="CEDIREKO FILMS — Back to top">
-        <img src="assets/CEDIREKO PNG.png" alt="CEDIREKO Films logo mark" class="site-header__logo" width="36" height="36" decoding="async">
+        <img src="assets/CEDIREKO PNG.png" alt="CEDIREKO Films logo mark" class="site-header__logo" width="32" height="32" decoding="async">
         <span class="site-header__brand-text wordmark">CEDIREKO FILMS</span>
       </a>
 
-      <!-- Right: Desktop Navigation Links -->
+      <!-- Desktop Navigation Links -->
       <nav class="site-header__nav" aria-label="Primary navigation">
         <ul class="site-header__nav-list">
           <li class="site-header__nav-item">
@@ -81,7 +80,7 @@
         </ul>
       </nav>
 
-      <!-- Mobile: Accessible Hamburger Toggle Button -->
+      <!-- Mobile Hamburger Toggle Button -->
       <button type="button" 
               class="site-header__burger" 
               id="mobile-nav-toggle" 
@@ -125,10 +124,6 @@
             </a>
           </li>
         </ul>
-
-        <div class="mobile-nav__footer">
-          <span class="mobile-nav__copyright">CEDIREKO FILMS &copy; 2026</span>
-        </div>
       </nav>
     </div>
   </header>
@@ -137,24 +132,24 @@
 
   <!-- HERO: Cinematic Showcase -->
   <section class="hero" id="hero" aria-labelledby="hero-title">
-    <!-- Letterbox cinema framing bars (animated scaleY on load) -->
+    <!-- Letterbox cinema framing bars -->
     <div class="letterbox top" aria-hidden="true"></div>
     <div class="letterbox bottom" aria-hidden="true"></div>
 
-    <!-- Viewfinder camera telemetry overlay (ARRI/RED cinema monitor aesthetic) -->
+    <!-- Viewfinder camera telemetry overlay -->
     <div class="hero__viewfinder hero-viewfinder" aria-hidden="true">
       <span class="hero-tc bl">00:00:00:00</span>
       <span class="hero-tc br">REC <span class="tally-dot" aria-hidden="true">&bull;</span></span>
     </div>
 
-    <!-- Central Hero Staging -->
+    <!-- Central Hero Staging: Clear 3-Tier Visual Hierarchy -->
     <div class="hero-inner hero__inner">
       <div class="logo-mark hero__logo">
         <img src="assets/CEDIREKO PNG.png" 
              alt="CEDIREKO Films studio logo" 
              class="hero__logo-img" 
-             width="150" 
-             height="150" 
+             width="64" 
+             height="64" 
              fetchpriority="high" 
              decoding="async">
       </div>
@@ -162,10 +157,10 @@
       <div class="hero__tagline-group">
         <p class="tagline hero__tagline">&ldquo;Maging mabait lang palagi.&rdquo;</p>
       </div>
-      <p class="hero__descriptor">Cinematography and direction.</p>
+      <p class="hero__descriptor">Cinematography &bull; Direction &bull; Manila</p>
       
       <!-- Interactive Semantic Scroll Prompt -->
-      <a href="#about" class="hero__scroll-cue scroll-cue" aria-label="Scroll to About section">
+      <a href="#reel" class="hero__scroll-cue scroll-cue" aria-label="Scroll to selected work">
         <span class="scroll-cue__line" aria-hidden="true"></span>
         <span class="scroll-cue__text">SCROLL</span>
       </a>
@@ -193,26 +188,25 @@
     </div>
   </section>
 
-  <!-- REEL / SELECTED WORK -->
+  <!-- SELECTED WORK -->
   <section class="reel" id="reel" aria-labelledby="reel-title">
     <div class="section-container">
       <div class="section-head reel-head reveal">
         <div>
           <span class="eyebrow">Selected work</span>
-          <h2 id="reel-title" class="section-title">The Reel</h2>
+          <h2 id="reel-title" class="section-title">Selected Work</h2>
         </div>
         <div class="reel-toggle" role="tablist" aria-label="Reel orientation">
-          <button type="button" class="reel-toggle-btn is-active" data-view="all" role="tab" aria-selected="true" id="tab-all" aria-controls="reel-grid">All Work</button>
+          <button type="button" class="reel-toggle-btn is-active" data-view="all" role="tab" aria-selected="true" id="tab-all" aria-controls="reel-grid">All</button>
           <button type="button" class="reel-toggle-btn" data-view="landscape" role="tab" aria-selected="false" id="tab-films" aria-controls="reel-grid">Films</button>
           <button type="button" class="reel-toggle-btn" data-view="portrait" role="tab" aria-selected="false" id="tab-vertical" aria-controls="reel-grid">Vertical</button>
         </div>
       </div>
 
-      <!-- 🎞️ Reel Grid: Responsive showcase with structured metadata -->
+      <!-- Reel Grid: Responsive showcase with structured metadata -->
       <div class="reel-grid reveal-stagger" id="reel-grid" data-view="all" role="tabpanel" aria-labelledby="tab-all">
 
         <!-- Project 01: Veronikka Rebranding -->
-        <!-- TODO: Confirm spelling of "VERONIKKA" with client -->
         <div class="reel-card stagger-item" data-orientation="landscape" data-seek-time="1.0" tabindex="0" role="button" aria-label="Play Veronikka Rebranding (Advertisement)">
           <div class="reel-thumb" style="background:linear-gradient(150deg,#5c1420,#2a0509 70%);"></div>
           <video class="reel-video" data-src="projects/VERONIKKA_REVISED_3.mp4" poster="assets/posters/veronikka.jpg" muted loop playsinline preload="metadata"></video>
@@ -225,7 +219,6 @@
         </div>
 
         <!-- Project 02: EA Performance -->
-        <!-- TODO: Confirm spelling of "EA PERFORMANCE" with client -->
         <div class="reel-card stagger-item" data-orientation="landscape" data-seek-time="2.0" tabindex="0" role="button" aria-label="Play EA Performance (Music Video)">
           <div class="reel-thumb" style="background:linear-gradient(150deg,#7a2233,#3c0008 70%);"></div>
           <video class="reel-video" data-src="projects/EA_FINALCUT.mp4" poster="assets/posters/ea.jpg" muted loop playsinline preload="metadata"></video>
@@ -237,12 +230,12 @@
           </div>
         </div>
 
-        <!-- FICO MANA Series Header: Groups Cyra, Breanna, and Leigh into a unified editorial collection -->
+        <!-- FICO MANA Series Header: Clean group label without bracket noise -->
         <div class="reel-series-header" data-series="ficomana">
           <div class="reel-series-header__inner">
-            <span class="eyebrow">[ VERTICAL EDITORIAL ]</span>
+            <span class="eyebrow">Editorial Series</span>
             <h3 class="reel-series-title">FICO MANA</h3>
-            <p class="reel-series-desc">Three-part series &bull; Cyra &bull; Breanna &bull; Leigh</p>
+            <p class="reel-series-desc">Three-part vertical collection &bull; Cyra &bull; Breanna &bull; Leigh</p>
           </div>
         </div>
 
@@ -253,7 +246,7 @@
           <div class="reel-tc"><span>SC.03</span><span>00:47</span></div>
           <div class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg></div>
           <div class="reel-meta">
-            <span class="reel-cat">FICO MANA &bull; 01</span>
+            <span class="reel-cat">FASHION REEL</span>
             <h3 class="reel-title">CYRA</h3>
           </div>
         </div>
@@ -265,7 +258,7 @@
           <div class="reel-tc"><span>SC.04</span><span>00:47</span></div>
           <div class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg></div>
           <div class="reel-meta">
-            <span class="reel-cat">FICO MANA &bull; 02</span>
+            <span class="reel-cat">FASHION REEL</span>
             <h3 class="reel-title">BREANNA</h3>
           </div>
         </div>
@@ -277,7 +270,7 @@
           <div class="reel-tc"><span>SC.05</span><span>00:47</span></div>
           <div class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg></div>
           <div class="reel-meta">
-            <span class="reel-cat">FICO MANA &bull; 03</span>
+            <span class="reel-cat">FASHION REEL</span>
             <h3 class="reel-title">LEIGH</h3>
           </div>
         </div>
@@ -313,10 +306,11 @@
     </div>
   </dialog>
 
+<!-- SITE FOOTER -->
 <footer class="site-footer" id="contact">
   <div class="footer-inner">
     <span class="footer-brand wordmark">CEDIREKO FILMS</span>
-    <!-- Quiet footer contact line -->
+    <p class="footer-inquiry-note">Commercial campaigns, music videos, and cinematic narratives in Manila &amp; beyond.</p>
     <div class="footer-contact">
       <a href="https://www.facebook.com/profile.php?id=100091618767684" target="_blank" rel="noopener noreferrer" class="footer-contact-link" aria-label="CEDIREKO Films on Facebook (opens in new tab)">Facebook: CEDIREKO Films</a>
     </div>
